@@ -10,10 +10,11 @@ classifiers = [
  
 setup(
   name='movieFinderIMDB',
-  version='0.0.3',
+  version='0.0.5',
   description='A moviefinder based on IMDB rating',
-  long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
-  url='',  
+  long_description=open('README.md', encoding="utf-8").read() + '\n\n' + open('CHANGELOG.txt').read(),
+  long_description_content_type="text/markdown",
+  url='https://github.com/NicolaiThomassen/moviefinder',  
   author='Nicolai Thomassen',
   author_email='Thomassen.nicolai@gmail.com',
   license='MIT', 

@@ -9,7 +9,7 @@ A clean installation using jupyter lab as interactive interpreter can be done as
 
 ```conda activate imdb```
 
-```pip install movieFinderIMDB==0.0.4```
+```pip install movieFinderIMDB==0.0.5```
 
 ```conda install jupyterlab```
 

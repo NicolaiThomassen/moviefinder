@@ -1,1 +1,0 @@
-Simple moviefinder based on IMDB's ratings
