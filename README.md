@@ -5,11 +5,11 @@ Repo made because I was frustrated with IMDB's search engine or lack hereof.
 A clean installation using jupyter lab as interactive interpreter can be done as so:
 
 
-```conda create -name imdb python 3.9```
+```conda create --name imdb python=3.9```
 
 ```conda activate imdb```
 
-```pip install movieFinderIMDB```
+```pip install movieFinderIMDB==0.0.4```
 
 ```conda install jupyterlab```
 
