@@ -1,9 +1,8 @@
-import requests
 from pathlib import Path
-from zipfile import ZipFile
 import gzip
 import shutil
 import os
+import requests
 import pandas as pd
 
 def store_movies(minyear = 1990, store_tsvs=False):
@@ -48,7 +47,7 @@ def store_movies(minyear = 1990, store_tsvs=False):
 
     df.drop(['ordering', 'language', 'types', 'isOriginalTitle', 'tconst_x','primaryTitle', 'genres', 'tconst_y', 'attributes', 'endYear', 'isAdult' ], axis=1, inplace=True)
     df = df.loc[~df.titleId.duplicated()]
-    df.to_pickle('all_movies.pkl')
+    df.to_pickle('all_movies.pkl', protocol=4)
     
     if not store_tsvs:
         for tsv in [tsv1, tsv2, tsv3]:
