@@ -9,7 +9,7 @@ class imdb_moviefinder:
     def __init__(self, df):
         self.df = df
     
-    def search_movies(self, year_from=None, year_to=None, genre=None, num_votes_from=None, average_rating_from=None):
+    def search_movies(self, year_from=None, year_to=None, genre=None, num_votes_from=None, average_rating_from=None, average_rating_to=None):
         '''        
         genres: ['Comedy' 'Drama' 'Action' 'Animation' 'Horror' 'Biography' 'Adventure'
          'Documentary' 'Crime' 'Fantasy' 'Thriller' 'Mystery' 'Romance' 'Family'
@@ -24,6 +24,9 @@ class imdb_moviefinder:
         if not average_rating_from:
             average_rating_from=self.df.averageRating.min()
         
+        if not average_rating_to:
+            average_rating_to=self.df.averageRating.max()
+        
         if not num_votes_from:
             num_votes_from=self.df.numVotes.min()
         
@@ -31,7 +34,8 @@ class imdb_moviefinder:
             (self.df.startYear>=year_from) &
             (self.df.startYear<=year_to) &
             (self.df.averageRating>=average_rating_from) &
-            (self.df.numVotes>=num_votes_from)
+            (self.df.numVotes>=num_votes_from) &
+            (self.df.averageRating<=average_rating_to)
         )]
         
         if genre != None:

@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import movieFinder
-df = pd.read_pickle('./all_movies.pkl')
-mf = movieFinder.imdb_moviefinder(df)
 
+url = 'https://raw.githubusercontent.com/NicolaiThomassen/moviefinder/main/all_movies.pkl'
+df = pd.read_pickle(url)
+mf = movieFinder.imdb_moviefinder(df)
 
 rating = st.slider("Minimum average rating", 0.0, 10.0, 6.0, 0.1)
 rating_to = st.slider("Maximum average rating", 0.0, 10.0, 6.0, 0.1)
