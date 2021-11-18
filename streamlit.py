@@ -1,4 +1,3 @@
-# nativefier --name test.exe https://share.streamlit.io/nicolaithomassen/streamlit-example --platform windows
 import streamlit as st
 import pandas as pd
 import movieFinder
@@ -12,9 +11,6 @@ num_votes_from = st.slider("Minimum number of votes", 0, 200000, 5000, 1000)
 genre = st.selectbox('Genre', df['genre1'].unique())
 year_from = st.selectbox('Year from', list(range(1990, 2022)))
 year_to = st.selectbox('Year to', list(range(1990, 2022)))
-# countries = st.multiselect(
-#     "Choose min rating", list(df.index), ["China", "United States of America"]
-# )
 
 st.write("Awesome movies", mf.search_movies(
     year_from=year_from,
