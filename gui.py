@@ -26,7 +26,7 @@ genres.extend((None,))
 idx1 = genres.index(None)
 genre = st.selectbox('Genre', genres, index=idx1)
 
-yearsa = list(range(1990, 2024, 1))
+yearsa = list(range(1990, 2025, 1))
 yearsa.extend((None,))
 idx2 = yearsa.index(None)
 year_from = st.selectbox('Year from', yearsa, index=idx2)
