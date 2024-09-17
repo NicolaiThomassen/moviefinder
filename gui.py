@@ -55,5 +55,5 @@ st.write("Awesome movies", mf.search_movies(
     'averageRating':'IMDB Rating',
     'numVotes':'Votes',
     'startYear':'Year'
-}).reset_index(drop=True).head(30).to_html(escape=False),
+}).reset_index(drop=True).head(100).to_html(escape=False),
          unsafe_allow_html=True)
