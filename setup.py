@@ -21,6 +21,6 @@ setup(
   classifiers=classifiers,
   keywords=['movie', 'imdb'],
   packages=find_packages(),
-  install_requires=['IMDbPY==2021.4.18', 'pandas==1.3.1', 'requests==2.25.1'],
+  install_requires=['IMDbPY==2021.4.18', 'pandas==2.1.3', 'requests==2.25.1'],
 #  setup_requires=['IMDbPY==2021.4.18', 'pandas==1.3.1']
 )
