@@ -31,7 +31,7 @@ yearsa.extend((None,))
 idx2 = yearsa.index(None)
 year_from = st.selectbox('Year from', yearsa, index=idx2)
 
-yearsb = list(range(2025, 1980, -1))
+yearsb = list(range(2026, 1980, -1))
 yearsb.extend((None,))
 idx3 = yearsb.index(None)
 year_to = st.selectbox('Year to', yearsb, index=idx3)

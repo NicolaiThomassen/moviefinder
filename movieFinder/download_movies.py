@@ -25,9 +25,9 @@ def store_movies(minyear = 1990, store_tsvs=False):
     tsv2 = 'title-basics.tsv'
     tsv3 = 'title-ratings.tsv'
     
-    titles = pd.read_csv(tsv1, sep='\t', low_memory=False)
-    basics = pd.read_csv(tsv2, sep='\t', low_memory=False)
-    ratings = pd.read_csv(tsv3, sep='\t', low_memory=False)
+    titles = pd.read_csv(tsv1, sep='\t')
+    basics = pd.read_csv(tsv2, sep='\t')
+    ratings = pd.read_csv(tsv3, sep='\t')
 
     df = titles.merge(basics, left_on='titleId', right_on='tconst').merge(ratings, left_on='titleId', right_on='tconst')
 
