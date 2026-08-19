@@ -74,10 +74,10 @@ st.write("Awesome movies", mf.search_movies(
     'averageRating':'IMDB Rating',
     'numVotes':'Votes',
     'startYear':'Year'
-}).style.hide(axis=0).format({
+}).head(300).style.hide(axis=0).format({
     "IMDB Rating": "{:.1f}"
 }).to_html(escape=False),
          unsafe_allow_html=True)
 
 st.logo('attribute.svg')
-
+st.caption("Streaming availability data provided by JustWatch via TMDB.")
