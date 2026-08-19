@@ -8,6 +8,7 @@ df['genre'] = df[['genre1','genre2','genre3']].fillna("").agg(' '.join, axis=1)
 df["providers"] = df["providers"].apply(
     lambda x: x if isinstance(x, list) else []
 )
+
 mf = movieFinder.imdb_moviefinder(df)
 
 df['Title'] = df[['titleId','title','originalTitle']].fillna("").agg('///'.join, axis=1)
@@ -73,7 +74,9 @@ st.write("Awesome movies", mf.search_movies(
     'averageRating':'IMDB Rating',
     'numVotes':'Votes',
     'startYear':'Year'
-}).style.hide(axis=0).to_html(escape=False),
+}).style.hide(axis=0).format({
+    "IMDB Rating": "{:.1f}"
+}).to_html(escape=False),
          unsafe_allow_html=True)
 
 st.logo('attribute.svg')

@@ -3,6 +3,7 @@ services:
     build: .
     environment:
       GITHUB_TOKEN: ...
+      TMDB_TOKEN: ...
     command: ["sleep", "infinity"] 
     stdin_open: true 
     tty: true
