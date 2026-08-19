@@ -1,0 +1,8 @@
+services:
+  moviefinder-updater:
+    build: .
+    environment:
+      GITHUB_TOKEN: ...
+    command: ["sleep", "infinity"] 
+    stdin_open: true 
+    tty: true

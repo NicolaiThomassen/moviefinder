@@ -9,7 +9,7 @@ class imdb_moviefinder:
     def __init__(self, df):
         self.df = df
     
-    def search_movies(self, year_from=None, year_to=None, genre=None, num_votes_from=None, average_rating_from=None, average_rating_to=None):
+    def search_movies(self, year_from=None, year_to=None, genre=None, num_votes_from=None, average_rating_from=None, average_rating_to=None, provider=None):
         '''        
         genres: ['Comedy' 'Drama' 'Action' 'Animation' 'Horror' 'Biography' 'Adventure'
          'Documentary' 'Crime' 'Fantasy' 'Thriller' 'Mystery' 'Romance' 'Family'
@@ -40,6 +40,11 @@ class imdb_moviefinder:
         
         if genre != None:
             movies = movies.loc[((self.df.isin([genre]).any(axis=1)))].copy()
+
+        if provider is not None:
+            movies = movies.loc[
+                movies.providers.apply(lambda x: provider in x)
+            ].copy()
         
         return movies.sort_values('averageRating', ascending=False)
     

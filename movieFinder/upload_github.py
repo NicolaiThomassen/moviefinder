@@ -36,6 +36,7 @@ def upload_to_github():
         content = base64.b64encode(f.read()).decode("ascii")
 
     # Erstat filen
+    print("Uploading all_movies.pkl...", flush=True)
     response = requests.put(
         url,
         headers=headers,
@@ -46,6 +47,11 @@ def upload_to_github():
             "branch": BRANCH,
         },
     )
-
+    print("GitHub status:", response.status_code, flush=True)
     response.raise_for_status()
-    print(response.json()["commit"]["html_url"])
+
+    print(
+        "New commit:",
+        response.json()["commit"]["html_url"],
+        flush=True,
+    )
