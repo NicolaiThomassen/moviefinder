@@ -8,7 +8,7 @@ df['genre'] = df[['genre1','genre2','genre3']].fillna("").agg(' '.join, axis=1)
 df["providers"] = df["providers"].apply(
     lambda x: x if isinstance(x, list) else []
 )
-df = df.loc[df["language"] != "hi"]
+
 mf = movieFinder.imdb_moviefinder(df)
 
 df['Title'] = df[['titleId','title','originalTitle']].fillna("").agg('///'.join, axis=1)

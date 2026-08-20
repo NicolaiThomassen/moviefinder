@@ -49,10 +49,7 @@ def store_movies(minyear=1990, store_tsvs=False):
         ],
         chunksize=250_000,
     ):
-        chunk = chunk.loc[
-            (chunk["region"] == "US") &
-            (chunk["language"] != "hi")
-        ]
+        chunk = chunk.loc[chunk["region"] == "US"]
 
         if not chunk.empty:
             title_chunks.append(chunk)

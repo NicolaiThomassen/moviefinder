@@ -4,27 +4,16 @@ import requests
 
 BASE_URL = "https://api.themoviedb.org/3"
 
-HEADERS = {
+headers = {
     "Authorization": f"Bearer {os.environ['TMDB_TOKEN']}",
     "Accept": "application/json",
 }
 
 
-def get_providers(tmdb_id, country="DK"):
-    response = requests.get(
-        f"{BASE_URL}/movie/{tmdb_id}/watch/providers",
-        headers=HEADERS,
-        # verify=False
-    )
-    response.raise_for_status()
-
-    return response.json()["results"].get(country, {})
-
-
-def get_streaming_info(imdb_id, country="DK"):
+def imdb_to_tmdb(imdb_id):
     response = requests.get(
         f"{BASE_URL}/find/{imdb_id}",
-        headers=HEADERS,
+        headers=headers,
         params={"external_source": "imdb_id"},
     )
     response.raise_for_status()
@@ -32,18 +21,33 @@ def get_streaming_info(imdb_id, country="DK"):
     movies = response.json()["movie_results"]
 
     if not movies:
-        return [], None
+        return None
 
-    movie = movies[0]
+    return movies[0]["id"]
 
-    providers = get_providers(
-        movie["id"],
-        country,
+
+def get_providers(tmdb_id, country="DK"):
+    response = requests.get(
+        f"{BASE_URL}/movie/{tmdb_id}/watch/providers",
+        headers=headers,
     )
+    response.raise_for_status()
 
-    streaming = [
+    return response.json()["results"].get(country, {})
+
+def get_streaming_providers(imdb_id, country="DK"):
+    tmdb_id = imdb_to_tmdb(imdb_id)
+
+    if tmdb_id is None:
+        return []
+
+    providers = get_providers(tmdb_id, country)
+
+    return [
         provider["provider_name"]
         for provider in providers.get("flatrate", [])
     ]
 
-    return streaming, movie["original_language"]
+
+# print(imdb_to_tmdb('tt15239678'))
+# print(get_providers(imdb_to_tmdb('tt15239678')))
