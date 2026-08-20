@@ -15,16 +15,21 @@ def main():
 
     df = pd.read_pickle("all_movies.pkl")
 
+    # df = df.iloc[:500]
     providers = []
+    languages = []
 
     for i, imdb_id in enumerate(df["titleId"], start=1):
         try:
-            result = tmdb.get_streaming_providers(imdb_id)
+            streaming, language = tmdb.get_streaming_info(imdb_id)
+
         except Exception as e:
             print(f"ERROR {imdb_id}: {e}", flush=True)
-            result = []
+            streaming = []
+            language = None
 
-        providers.append(result)
+        providers.append(streaming)
+        languages.append(language)
 
         if i % 100 == 0:
             print(
@@ -33,6 +38,7 @@ def main():
             )
 
     df["providers"] = providers
+    df["language"] = languages
 
     df.to_pickle(
         "all_movies.pkl",
