@@ -14,7 +14,7 @@ def get_providers(tmdb_id, country="DK"):
     response = requests.get(
         f"{BASE_URL}/movie/{tmdb_id}/watch/providers",
         headers=HEADERS,
-        verify=False
+        # verify=False
     )
     response.raise_for_status()
 
