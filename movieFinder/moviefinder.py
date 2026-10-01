@@ -38,12 +38,12 @@ class imdb_moviefinder:
             (self.df.averageRating<=average_rating_to)
         )]
         
-        if genre != None:
-            movies = movies.loc[((self.df.isin([genre]).any(axis=1)))].copy()
-
-        if provider is not None:
+        if genre != []:
+            movies = movies.loc[(self.df.isin(genre).any(axis=1))].copy()
+        
+        if provider != []:
             movies = movies.loc[
-                movies.providers.apply(lambda x: provider in x)
+                movies.providers.apply(lambda x: any(k in x for k in provider))
             ].copy()
         
         return movies.sort_values('averageRating', ascending=False)
